@@ -9,7 +9,7 @@ Package gorilla/schema converts structs to and from form values.
 	
 ## 解读
 
-不要被 schema 这个名字迷惑, 这其实是一个 form 提交数据到 struct 实例的转换器. 非常实用的一个功能. 使用也非常简单. 但是如果您查看源码发现没有引入 net/http 包, 这就是解耦. 因为 http.Request.Form 其实就是一个 map[string][]string 类型.
+不要被 schema 这个名字迷惑, 这其实是一个 form 提交数据到 struct 实例的转换器。您查看源码发现没有引入 net/http 包, 这就是解耦，因为 http.Request.Form 其实就是一个 map[string][]string 类型.
 
 ```go
 package main
@@ -37,14 +37,14 @@ func main() {
 }
 ```
 
-是不是很简单, 其代码实现也很简单. 而且 Schema 还提供了注册转换函数
+是不是很简单, 其代码实现也很简单！而且 Schema 还提供了注册转换函数。
 
 ```go
 type Converter func(string) reflect.Value
 func (d *Decoder) RegisterConverter(value interface{}, converterFunc Converter)
 ```
 
-比如我们常见的 time.Time 类型, 因为 layout 的多样性, 可以根据我们的应用写独立的转换函数
+比如我们常见的 time.Time 类型, 因为 layout 的多样性, 可以根据我们的应用写独立的转换函数。
 
 ```go
 func StringToTime(s string) reflect.Value {
